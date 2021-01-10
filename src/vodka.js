@@ -105,11 +105,6 @@ export default class Vodka extends HTMLElement {
   //     .map((key) => key.slice(2));
   // }
 
-  static mount(component, target) {
-    const element = document.createElement(component);
-    document.querySelector(target).appendChild(element);
-  }
-
   html(strings, ...values) {
     this._strings = strings;
     // Bind all function values to the component object (this)
@@ -121,5 +116,18 @@ export default class Vodka extends HTMLElement {
     // <vodka/> will be used to store a reference to the node later when mounting
     this._template = document.createElement('template');
     this._template.innerHTML = this._strings.join('<vodka></vodka>');
+  }
+
+  // HELPERS
+
+  static mount(component, target) {
+    const element = document.createElement(component);
+    document.querySelector(target).appendChild(element);
+  }
+
+  static define(tagname, classComponent) {
+    const customElement = `v-${tagname}`;
+    window.customElements.define(customElement, classComponent);
+    return customElement;
   }
 }

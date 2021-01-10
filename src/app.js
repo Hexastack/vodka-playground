@@ -1,8 +1,8 @@
-import Vodka from './vodka.js';
+import Vodka from './vodka';
+import './hello';
 
-class App extends Vodka {
+export default Vodka.define('myapp', class extends Vodka {
   constructor() {
-    // debugger;
     super();
     
     // Static vars (do not updateComponent on change)
@@ -49,9 +49,11 @@ class App extends Vodka {
                 ${() => this.state.mytext}
                 <button id="reset">Reset !</button>
             </div>
+            <hr/>
+            <div class="subcomponent">
+                SUBCOMPONENT: <v-hello/>
+            </div>
         </div>
     `;
   }
-}
-
-window.customElements.define('my-app', App);
+});

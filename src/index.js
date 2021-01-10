@@ -1,5 +1,5 @@
 import Vodka from './vodka';
 
-import './app'
+import App from './app'
 
-Vodka.mount('my-app', '#app');
+Vodka.mount(App, '#app');
